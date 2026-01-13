@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.png"],
+      includeAssets: ["favicon.png", "pwa-192.png", "pwa-512.png", "apple-touch-icon.png"],
       manifest: {
         name: "Local Finance",
         short_name: "Finance",
@@ -20,14 +20,20 @@ export default defineConfig({
         theme_color: "#3b82f6",
         icons: [
           {
-            src: "/favicon.png",
+            src: "/pwa-192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/favicon.png",
+            src: "/pwa-512.png",
             sizes: "512x512",
             type: "image/png",
+          },
+          {
+            src: "/pwa-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
           },
         ],
       },
