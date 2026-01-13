@@ -34,9 +34,25 @@ export const purchases = sqliteTable("purchases", {
 
 // === BASE SCHEMAS ===
 
-export const insertDailySalesSchema = createInsertSchema(dailySales).omit({ id: true, createdAt: true });
-export const insertExpenseSchema = createInsertSchema(expenses).omit({ id: true, createdAt: true });
-export const insertPurchaseSchema = createInsertSchema(purchases).omit({ id: true, createdAt: true });
+export const insertDailySalesSchema = createInsertSchema(dailySales)
+  .omit({ id: true, createdAt: true })
+  .extend({
+    totalAmount: z.coerce.number(),
+    bankakAmount: z.coerce.number(),
+    cashAmount: z.coerce.number(),
+  });
+
+export const insertExpenseSchema = createInsertSchema(expenses)
+  .omit({ id: true, createdAt: true })
+  .extend({
+    amount: z.coerce.number(),
+  });
+
+export const insertPurchaseSchema = createInsertSchema(purchases)
+  .omit({ id: true, createdAt: true })
+  .extend({
+    amount: z.coerce.number(),
+  });
 
 // === EXPLICIT API CONTRACT TYPES ===
 
